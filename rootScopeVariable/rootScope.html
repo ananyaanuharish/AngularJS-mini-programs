@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <title>
+        Demo on Root Scope Variable
+    </title>
+    <head>
+        <script type="text/javascript" src="https:\\ajax.googleapis.com\ajax\libs\angularjs\1.8.2\angular.min.js"></script>
+        <script>
+            var app=angular.module("myApp",[])
+            app.run(function($rootScope){
+                $rootScope.dept1="CSE"
+                $rootScope.dept2="ECE"    
+            });
+
+            app.controller(("myCntrl"),function($scope){
+                $scope.name1="ANANYA"
+            });
+            app.controller(("myAnotherCntrl"),function($scope){
+                $scope.name2="HARISH"
+            });
+
+
+        </script>
+    </head>
+    <body ng-app="myApp">
+        <div ng-controller="myCntrl">
+            dept. of {{dept1}} Faculties<br/>
+            1. {{name1}}
+        </div>
+        <div ng-controller="myAnotherCntrl">
+            dept. of {{dept2}} Faculties<br/>
+            2. {{name2}}
+        </div>
+    </body>
+</html>

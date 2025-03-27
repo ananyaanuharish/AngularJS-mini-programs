@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <title>
+        ng-controller Demo
+    </title>
+    <head>
+        <script type="text/javascript" src="https:\\ajax.googleapis.com\ajax\libs\angularjs\1.8.2\angular.min.js">
+        </script>
+        <script>
+            var app=angular.module("myApp",[])
+            app.controller("myCntrl",function($scope)
+            {
+                $scope.name="ANANYA HARISH"
+                $scope.age="20"
+                $scope.address="HASSAN"
+            });
+            app.controller("myAnotherCntrl",function($scope)
+            {
+                $scope.email="ananyaharish00@gmail.com"
+                $scope.dept="AIML"
+            });
+        </script>
+    </head>
+    <body ng-app="myApp">
+        <div ng-controller="myCntrl">
+            Your name is:{{name}}<br/>
+            Your age is:{{age}}<br/>
+            Your address is:{{address}}
+        </div>
+        <div ng-controller="myAnotherCntrl">
+            Your email id is:{{email}}<br/>
+            Your dept is:{{dept}}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <title>
+        Demo on ng-repeat
+    </title>
+
+    <head>
+        <script type="text/javascript"
+        src="https:\\ajax.googleapis.com\ajax\libs\angularjs\1.8.2\angular.min.js">
+        </script>
+
+    <script>
+        var app=angular.module("myApp",[]);
+        app.controller("myCntrl",function($scope)
+        {
+            $scope.myList=['Apple','Mango','Banana','Pomo']
+        });
+    </script>
+
+    </head>
+
+    <body ng-app="myApp">
+        <div ng-controller="myCntrl">
+                Enter item to add:<input type="text" ng-model="item"><br/>
+            <ul>
+                <li ng-repeat="fruit in myList">{{fruit}}</li>
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item Management Application</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        var app = angular.module("itemMgmtApp", []);
+        app.controller("itemMgmtAppCntrl", function($scope) {
+            $scope.itemList = ['Pen', 'Pencil', 'Eraser', 'Book'];
+
+            $scope.addItem = function() {
+                if ($scope.newItem)
+                 {
+                    if ($scope.itemList.indexOf($scope.newItem) == -1)
+                     {
+                        $scope.itemList.push($scope.newItem);
+                    } 
+                    else {
+                        alert('This item is already in the item collection');
+                    }
+                }
+                 else {
+                    alert('Please enter the item to add');
+                }
+                $scope.newItem = ''; 
+            };
+
+            $scope.removeItem = function(item) {
+                var yes = confirm("Are you sure you want to delete " + item);
+                if (yes) {
+                    var index = $scope.itemList.indexOf(item);
+                    $scope.itemList.splice(index, 1);
+                }
+            };
+        });
+    </script>
+</head>
+<body ng-app="itemMgmtApp">
+    <h1>Item Management Application</h1>
+    <div ng-controller="itemMgmtAppCntrl">
+        Enter an item to add: <input type="text" ng-model="newItem">
+        <button ng-click="addItem()">ADD</button>
+        <br/><br/>
+        <b>List of Items</b>
+        <table border="1">
+            <tr>
+                <th>SLNO</th>
+                <th>Item</th>
+                <th>Remove</th>
+            </tr>
+            <tr ng-repeat="item in itemList track by $index">
+                <td>{{$index+1}}</td>
+                <td>{{item}}</td>
+                <td><button ng-click="removeItem(item)">Remove</button></td>
+            </tr>
+        </table>
+        <br/>
+        Total Number of Items = <b>{{itemList.length}}</b>
+    </div>
+</body>
+</html>
